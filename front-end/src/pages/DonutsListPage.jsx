@@ -6,9 +6,7 @@ export default function DonutsListPage() {
   return (
     <div>
         <AllDonutsComponent />
-        <button>
-            <Link href={{pathname: '/'}}>Home</Link>
-        </button>
+        
     </div>
   )
 }

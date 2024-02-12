@@ -45,7 +45,7 @@ export default function DonutDetailsPage() {
     };
 
     return (
-        <div>
+        <div className='body'>
             {donut ? (
                 <>
                     <DetalleDonutComponent donutId={id} />

@@ -1,6 +1,7 @@
 import { createDonut } from '@/api/donutFetch'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
+import Link from 'next/link'
 
 export default function CreateDonutComponent() {
     const router = useRouter()
@@ -33,7 +34,8 @@ export default function CreateDonutComponent() {
     }
 
   return (
-    <div>
+    <div className='body'>
+        <h1>Crea tu propio donut</h1>
         <div>
             <span>Nombre</span>
             <input type="text" value={nombre} onChange={nombreHandler} />
@@ -47,6 +49,7 @@ export default function CreateDonutComponent() {
             <input type="text" value={precio} onChange={precioHandler} />
         </div>
         <div><button onClick={addDonutClick}>Crear Donut</button></div>
+        <div><button><Link href={{ pathname: '/' }}>Inicio</Link></button></div>
     </div>
   )
 }

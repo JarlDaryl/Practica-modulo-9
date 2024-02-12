@@ -16,8 +16,9 @@ export default function AllDonutsComponent() {
 
 	return (
 		<>
-			<div>
-				<h1>Estos son todos nuestros donuts</h1>
+			<div className='body'>
+				
+				<h1>¡Echa un vistazo a nuestros increibles Donuts!</h1>
 
 				{donut.map((donut, index) => {
 					return (
@@ -39,6 +40,9 @@ export default function AllDonutsComponent() {
 						</ul>
 					);
 				})}
+				<button>
+            <Link href={{pathname: '/'}}>Home</Link>
+        </button>
 			</div>
 		</>
 	);
