@@ -11,10 +11,10 @@ const getAllDonuts = async (req, res) => {
             return {
                 id: donut.id,
                 nombre: donut.nombre,
-                tipo: donut.tipo
+                tipo: donut.tipo,
+                precio: donut.precio
             }
         })
-        console.log(resDonut)
         res.status(200).json({
             status: 'succeeded',
             data: resDonut,
@@ -34,7 +34,7 @@ const getDonutById = async (req, res) => {
         const donut = await donutModel.findById(id)
         res.status(200).json({
             status: 'succeeded',
-            data: digimon,
+            data: donut,
             error: null
         })
 
@@ -47,14 +47,13 @@ const getDonutById = async (req, res) => {
 // Create Donut
 const createDonut = async (req,res) => {
     try{
-        const donutnData = req.body
+        const donutData = req.body
         const newDonut = await donutModel({
-            nombre: donutnData.nombre,
-            tipo: donutnData.tipo,
-            precio: donutnData.precio
+            nombre: donutData.nombre,
+            tipo: donutData.tipo,
+            precio: donutData.precio
         })
         await newDonut.save()
-        console.log(newDonut)
         res.status(200).json({
             status: 'succeeded',
             data: newDonut,
@@ -73,27 +72,28 @@ const updateDonut = async (req,res) => {
         const id = req.params.id
         const {nombre, tipo, precio} = req.body
         
-        const donutAaux = await donutModel.findById(id)
+        const donutAux = await donutModel.findById(id)
 
-        if(!donutAaux) return res.status(404).send('El donut no existe')
+        if(!donutAux) return res.status(404).send('El donut no existe')
         
         if(nombre) {
-            donutAaux.nombre = nombre
+            donutAux.nombre = nombre
         }
         if(tipo){
-            donutAaux.tipo = tipo
+            donutAux.tipo = tipo
         }
         if(precio){
-            donutAaux.precio = precio
+            donutAux.precio = precio
         }
 
-        await donutAaux.save()
-
+        await donutAux.save()
         res.status(200).json({
             status: 'succeeded',
-            data: null,
-            error: null
-        })
+            data: donutAux,
+            error: null  
+        });
+        
+
 
     }catch(error){
         res
