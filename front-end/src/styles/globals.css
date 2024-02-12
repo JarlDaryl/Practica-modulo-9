@@ -6,9 +6,7 @@
 
 .body{
     background-color: #E8F3D6;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
 }
 
 .image{
